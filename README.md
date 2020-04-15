@@ -39,3 +39,7 @@ Returns the number of keys available.
 ### each(callback)
 
 Iterate and execute a function for each key. { callback(key, value) }
+
+### clear()
+
+Clear all keys and values
