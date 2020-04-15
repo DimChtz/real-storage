@@ -48,3 +48,4 @@ Clear all keys and values
 
 1) Add storage mode ( localStorage or sessionStorage )
 2) Add expiration
+3) Improve events
