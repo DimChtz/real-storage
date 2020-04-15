@@ -1,11 +1,40 @@
+/**
+ * 
+ * real-storage
+ * Version: 1.0.0
+ * URL: https://github.com/DimChtz/real-storage
+ * Author: Dimitris Chatzis
+ * Author URL: https://dimchatzis.com
+ * 
+ */
+
 (function(window, document, undefined) {
+
+    var isFunction = function(callback) {
+        return callback && {}.toString.call(callback) === '[object Function]';
+    }
+
+    var setEvent = function(key, callback) {
+
+        var _key = key;
+        window.addEventListener('storage', function(event) {
+
+            if ( event.key === _key ) {
+                callback(event);
+            }
+
+        }, true);
+
+        return true;
+
+    }
 
     function RealStorage(name, opt) {
 
         this.name = name || '';
         this.data = opt.data || {};
 
-        if ( localStorage.getItem(name) === null ) {
+        if ( localStorage.getItem(name) === null && opt.data !== undefined ) {
             
             localStorage.setItem(name, JSON.stringify(this.data));
 
@@ -15,18 +44,15 @@
 
         }
 
-        if ( opt['onchange'] ) {
+        opt['onchange'] && isFunction(opt['onchange']) && setEvent(this.name, opt['onchange']);
 
-            var ls_name = this.name;
-            window.addEventListener('storage', function(event) {
+    }
 
-                if ( event.key === ls_name ) {
-                    opt['onchange'](event);
-                }
+    RealStorage.prototype.onchange = function(callback) {
 
-            }, true);
+        callback && isFunction(callback) && setEvent(this.name, callback);
 
-        }
+        return this;
 
     }
 
