@@ -1,7 +1,7 @@
 # Real Storage
 Javascript library for easier storage manipulation
 
-## How to initialize
+## How to initialize (example)
 ```javascript
 var audioStorage = new RealStorage('audio', {
   'data': {
