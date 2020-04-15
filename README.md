@@ -38,5 +38,4 @@ Returns the number of keys available.
 
 ### each(callback)
 
-Iterate and execute a function for each key.
-  callback(key, value)
+Iterate and execute a function for each key. { callback(key, value) }
