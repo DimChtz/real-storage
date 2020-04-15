@@ -43,3 +43,8 @@ Iterate and execute a function for each key. { callback(key, value) }
 ### clear()
 
 Clear all keys and values
+
+## Next steps
+
+1) Add storage mode ( localStorage or sessionStorage )
+2) Add expiration
